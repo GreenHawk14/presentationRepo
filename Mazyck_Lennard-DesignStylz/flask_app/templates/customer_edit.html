@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+    crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{url_for("static", filename="css/style.css")}}">
+    <link rel="stylesheet" href="https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyB5UkT8kNU76EdG2z4wp7-yrfa_Fca9kDU">
+    <title>Design Stylz</title>
+</head>
+<body>
+    <nav class="navbar-edit navbar-expand-lg navbar-dark bg-primary">
+        <a class="nav-link"><h1 style="color: #714288; font-family:'Tangerine', serif; text-shadow: 4px 4px 4px #99e1e5; font-size:75px;">Design Stylz</h1></a>
+        <h1 style="margin-top: 20px;"> Edit: {{clientSearch.last_name}}, {{clientSearch.first_name}}</h1>
+    </nav>
+
+    <div class="editCUwrapper">
+        <form action="/customerUpdate/{{clientSearch.id}}" method="post">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" name="{{clientSearch.username}}" value="{{clientSearch.username}}" disabled>
+            </div>
+            <div class="form-group">
+                <label for="first_name">First Name:</label>
+                <input type="text" name="{{clientSearch.first_name}}" value="{{clientSearch.first_name}}" disabled>
+            </div>
+            <div class="form-group">
+                <label for="last_name">Last Name:</label>
+                <input type="text" name="{{clientSearch.last_name}}" value="{{clientSearch.last_name}}" disabled>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" name="{{clientSearch.email}}" value="{{clientSearch.email}}">
+            </div>
+            <div class="form-group">
+                <label for="first_name">Phone number:</label>
+                <input type="number" name="{{clientSearch.contact}}" value="{{clientSearch.contact}}" placeholder="1234567890" value="{{clientSearch.contact}}">
+            </div>
+            <div class="form-group">
+                <label for="first_name">Address:</label>
+                <input type="textarea" name="{{clientSearch.address}}" value="{{clientSearch.address}}" value="{{clientSearch.address}}">
+            </div>
+            <button class="btn btn-info" type="submit">Update Information</button>
+            <a style="color:#afffff; margin-left: 20px;" href="/customerDash" class="btn btn-outline-info">× Close</a>
+        </form>
+    </div>
+</body>
+</html>

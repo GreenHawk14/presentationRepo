@@ -1,0 +1,154 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.navbar{
+    height: 150px;
+    display: flex;
+    justify-content: space-between;
+}
+.navbar-edit{
+    display: flex;
+    justify-content: space-around;
+}
+.container_landing{
+    border: 5px solid #4e2161;
+    border-radius: 20px;
+    box-shadow: 3px 5px 10px;
+    width: 1000px;
+    height: 600px;
+    margin-left: 350px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 100px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+.card{
+    width: 375px;
+    height: 450px;
+
+}
+.card-body{
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.style_land{
+    width: 250px;
+    height: 250px;
+}
+.stylist-list{
+    border: 5px solid #74dbef;
+    border-radius: 20px;
+    background-color: #393c83;
+    padding: 20px;
+    margin-top: 25px;
+    margin-left: 250px;
+    width: 1200px;
+    height: 600px;
+    flex-wrap: wrap;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+.customer-list{
+    border: 5px solid #74dbef;
+    border-radius: 20px;
+    background-color: #393c83;
+    padding: 20px;
+    margin-top: 25px;
+    margin-left: 250px;
+    width: 1200px;
+    height: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+.login-stylist{
+    background-color: #693e52;
+    border-radius: 30px;
+    color: white;
+    width: 1200px;
+    height: 600px;
+    margin-left: 250px;
+    margin-top: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+}
+.login-customer{
+    background-color: #693e52;
+    border-radius: 30px;
+    color: white;
+    width: 1200px;
+    height: 600px;
+    margin-left: 250px;
+    margin-top: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+}
+.registerST{
+    width: 500px;
+    padding: 20px;
+}
+.loginST{
+    width: 500px;
+    height: 400px;
+    padding: 20px;
+}
+.registerCU{
+    width: 500px;
+    padding: 20px;
+}
+.loginCU{
+    width: 500px;
+    height: 400px;
+    padding: 20px;
+}
+.editForm_stylist{
+    border: 5px solid green;
+    background-color: #35013f;
+    color: whitesmoke;
+    width: 1000px;
+    padding: 20px;
+    margin-top: 20px;
+    margin-left: 300px;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+}
+.checkbox-group{
+    display: flex;
+    justify-content: space-around;
+}
+.editCUwrapper{
+    border: 5px solid purple;
+    border-radius: 30px;
+    width: 1000px;
+    margin-left: 300px;
+    margin-top: 20px;
+    padding: 20px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+}

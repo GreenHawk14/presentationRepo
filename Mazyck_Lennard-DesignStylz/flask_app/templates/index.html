@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+    crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{url_for("static", filename="css/style.css")}}">
+    <link rel="stylesheet" href="https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyB5UkT8kNU76EdG2z4wp7-yrfa_Fca9kDU">
+    <title>Design Stylz</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+            <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link"><h1 style="color: #714288; font-family:'Tangerine', serif; text-shadow: 4px 4px 4px #99e1e5; font-size:75px;">Design Stylz</h1></a>
+            </li>
+        </div>
+    </nav>
+    <div class="container_landing">
+        <div class="card text-center">
+            <div class="card-header">
+                <h2>Stylist Portal</h2>
+            </div>
+            <div class="card-body">
+                <img src="static/images/stylist_landing.jpg" alt="stylist logo" class="style_land">
+                <a href="/stylist-login" class="btn btn-primary">Click Here ►</a>
+            </div>
+        </div>
+
+        <div class="card text-center">
+            <div class="card-header">
+                <h2>Customer Portal</h2>
+            </div>
+            <div class="card-body">
+                <img src="static/images/customer_land.jpg" alt="customer logo" class="style_land">
+                <a href="/customer-login" class="btn btn-primary">Click Here ►</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

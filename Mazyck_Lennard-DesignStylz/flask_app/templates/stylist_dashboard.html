@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+    crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{url_for("static", filename="css/style.css")}}">
+    <link rel="stylesheet" href="https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyB5UkT8kNU76EdG2z4wp7-yrfa_Fca9kDU">
+    <title>Design Stylz</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="nav-link"><h1 style="color: #714288; font-family:'Tangerine', serif; text-shadow: 4px 4px 4px #99e1e5; font-size:75px;">Design Stylz</h1></a>
+        <div class="card-profile border-secondary mb-3" style="max-width: 20rem;">
+            <div class="card-body">
+                <h4 style="font-size: 24px;" class="card-title"> <br> Welcome back, <a style="color: #f1fea4;" href="/edit/Stylist/{{barber.id}}">{{barber.username}}</a></h4>
+                <img style="width: 100px; height: 100px;" src="{{barber.img}}" alt="stylist-pic">
+                <a style="color:#afffff; margin-left: 20px;" href="/logout" class="btn btn-outline-info">× Logout</a>
+            </div>
+        </div>
+    </nav>
+    <h3 style="margin-left: 250px;">Upcoming appointments:</h3>
+    <div class="stylist-list overflow-auto" data-spy="scroll" data-target="#navbar-example2" data-offset="0" style="height: 525px;">
+        
+    </div>
+</body>
+</html>
