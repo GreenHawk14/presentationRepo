@@ -22,27 +22,27 @@
         <form action="/customerUpdate/{{clientSearch.id}}" method="post">
             <div class="form-group">
                 <label for="username">Username:</label>
-                <input type="text" name="{{clientSearch.username}}" value="{{clientSearch.username}}" disabled>
+                <input type="text" name="username" value="{{clientSearch.username}}" readonly>
             </div>
             <div class="form-group">
                 <label for="first_name">First Name:</label>
-                <input type="text" name="{{clientSearch.first_name}}" value="{{clientSearch.first_name}}" disabled>
+                <input type="text" name="first_name" value="{{clientSearch.first_name}}" readonly>
             </div>
             <div class="form-group">
                 <label for="last_name">Last Name:</label>
-                <input type="text" name="{{clientSearch.last_name}}" value="{{clientSearch.last_name}}" disabled>
+                <input type="text" name="last_name" value="{{clientSearch.last_name}}" readonly>
             </div>
             <div class="form-group">
                 <label for="email">Email Address:</label>
-                <input type="email" name="{{clientSearch.email}}" value="{{clientSearch.email}}">
+                <input type="email" name="email" value="{{clientSearch.email}}">
             </div>
             <div class="form-group">
                 <label for="first_name">Phone number:</label>
-                <input type="number" name="{{clientSearch.contact}}" value="{{clientSearch.contact}}" placeholder="1234567890" value="{{clientSearch.contact}}">
+                <input type="number" name="contact" value="{{clientSearch.contact}}" placeholder="1234567890" value="{{clientSearch.contact}}">
             </div>
             <div class="form-group">
                 <label for="first_name">Address:</label>
-                <input type="textarea" name="{{clientSearch.address}}" value="{{clientSearch.address}}" value="{{clientSearch.address}}">
+                <input type="textarea" name="address" value="{{clientSearch.address}}">
             </div>
             <button class="btn btn-info" type="submit">Update Information</button>
             <a style="color:#afffff; margin-left: 20px;" href="/customerDash" class="btn btn-outline-info">× Close</a>

@@ -73,6 +73,7 @@ def editCustomer(customer_id):
 
 @app.route('/customerUpdate/<int:Customer_id>', methods=['POST'])
 def customerUpdated(Customer_id):
+    print(request.form)
     data = {
         'id' : Customer_id,
         'first_name' : request.form['first_name'],
@@ -80,9 +81,8 @@ def customerUpdated(Customer_id):
         'username' : request.form['username'],
         'email' : request.form['email'],
         'contact' : request.form['contact'],
-        'img' : request.form['img'],
         'address' : request.form['address']
     }
-    Stylist.update_stylist(data)
+    Customer.update_customer(data)
     print('Details have been updated...')
     return redirect('/customerDash')
