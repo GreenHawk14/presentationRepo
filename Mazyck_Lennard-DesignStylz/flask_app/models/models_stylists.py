@@ -55,6 +55,15 @@ class Stylist:
                 return Stylist(result[0])
 
         @classmethod
+        def all_stylist(cls):
+                query = "SELECT * FROM stylist"
+                results = connectToMySQL(db).query_db(query)
+                pages = []
+                for page in results:
+                        pages.append(cls(page))
+                return pages
+
+        @classmethod
         def findStylist (cls, data):
                 query = """
                         SELECT * FROM stylist
