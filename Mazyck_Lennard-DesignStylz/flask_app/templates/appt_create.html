@@ -33,7 +33,7 @@
                     {% endwith %}
 
     <div class="appt_container">
-        <form action="/appt_create" method="post">
+        <form action="/appt_create" method="post" enctype="multipart/form-data">
             <div class="form-section">
                 <div class="form-group">
                     <label for="date">Schedule date @</label>
@@ -65,10 +65,13 @@
                 <div class="form-group">
                     <label for="date">Do you have any kind photos to assist with your appointment?</label>
                     <input type="file" name="image" id="image">
+                    <input type="submit" value="Upload">
                 </div>
             </div>
+
             <div class="form-group">
                 <label for="first_name">What service would you like?</label>
+                <p>One can be selected. if need please specify in the details.</p>
                 <div class="checkbox-group">
                     <div>
                         <input type="radio" name="service" value="Some braids">
@@ -87,7 +90,6 @@
                         <label for="waxing">Waxing</label>
                     </div>
                 </div>
-
 
             </div>
             <button type="submit" class=" btn btn-info">Set appointment √</button>

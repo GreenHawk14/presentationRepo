@@ -58,6 +58,21 @@ input[readonly] {
     -ms-border-radius: 20px;
     -o-border-radius: 20px;
 }
+
+.stylist-log{
+    border: 5px solid #8b4c8c;
+    background-color: #2b3595;
+    border-radius: 30px;
+    width: 1200px;
+    padding: 20px;
+    margin-top: 10px;
+    margin-left: 250px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+}
+
 .customer-list{
     border: 5px solid #74dbef;
     border-radius: 20px;

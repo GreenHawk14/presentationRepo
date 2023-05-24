@@ -24,10 +24,18 @@
         </div>
     </nav>
     <h3 style="margin-left: 250px;">Upcoming appointments:</h3>
-    <div class="stylist-list overflow-auto" data-spy="scroll" data-target="#navbar-example2" data-offset="0" style="height: 525px;">
-        {% %}
-        
-        {% %}
+    <div class="stylist-list overflow-auto" data-spy="scroll" data-target="#navbar-example2" data-offset="0" style="height: 525px; padding: 20px;">
+
+        {% for detail in Schedule %}
+            <div class="card-body" style="background-color: white; border:5px solid green; border-radius: 20px;">
+                <h4 class="card-title">Appointment Scheduled!</h4>
+                <h6 class="card-subtitle mb-2 text-muted">{{detail.service}}</h6>
+                <p class="card-text">Schedule on {{detail.date}} @ {{detail.time}}</p>
+                <button href="/show/appointment/{{detail.id}}">View More</button>
+                <a href="/Stylist/{{appointment.id}}/Delete" class="card-link">Cancel appointment</a>
+            </div>
+        {% endfor %}
+
     </div>
 </body>
 </html>

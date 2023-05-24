@@ -74,7 +74,7 @@ class Appointment:
                         SELECT * from appointment
                         LEFT JOIN customer
                         ON customer.id = appointment.customer_id;
-                        WHERE appointment.id = %(id)s
+                        WHERE stylist.id = %(id)s
                         """
                 results = connectToMySQL(db).query_db(query,data)
                 catalog = []
@@ -95,6 +95,33 @@ class Appointment:
                         page.bulletin = Appointment(customer_data)
                         catalog.append(page)
                 return catalog
+
+        def apptDetailsCustomers(cls, data):
+                query = """
+                        SELECT * from appointment
+                        LEFT JOIN customer
+                        ON customer.id = appointment.customer_id;
+                        WHERE customer.id = %(id)s
+                        """
+                results = connectToMySQL(db).query_db(query,data)
+                customer_bk = []
+                for page in results:
+                        content = cls(page)
+                        customer_details = {
+                                'id' : session['customer_id'],
+                                'first_name' : page['first_name'],
+                                'last_name' : page['last_name'],
+                                'email' : page['email'],
+                                'username' : page['username'],
+                                'password' : page['password'],
+                                'contact' : page['contact'],
+                                'address' : page['address'],
+                                'created_at' : page['created_at'],
+                                'updated_at' : page['updated_at']
+                        }
+                        content.bulletin = Appointment(customer_details)
+                        customer_bk.append(content)
+                return customer_bk
 
         @staticmethod
         def appointment_validator(data):

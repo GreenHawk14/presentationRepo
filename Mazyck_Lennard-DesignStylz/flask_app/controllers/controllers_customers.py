@@ -12,6 +12,11 @@ bcrypt = Bcrypt(app)
 def loginCustomer():
     return render_template('customer_login.html')
 
+@app.route('/Team')
+def teamLog():
+    employee = Stylist.allStylist()
+    return render_template('stylist_list.html', employee = employee)
+
 @app.route('/register_customer', methods=["POST"])
 def register_user():
     data = {
@@ -61,6 +66,7 @@ def customer_Dash():
         'id': session['customer_id']
     }
     client = Customer.findCustomer(data)
+    #Appt = Appointment.apptDetailsCustomers(data)
     return render_template('customer_dashboard.html', client = client)
 
 @app.route('/edit/Customer/<int:customer_id>')

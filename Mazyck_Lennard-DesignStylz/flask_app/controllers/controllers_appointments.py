@@ -12,6 +12,14 @@ bcrypt = Bcrypt(app)
 def index():
     return render_template('index.html')
 
+@app.route('/Stylist/<int:appointment_id>/Delete')
+def destroy(appointment_id):
+    data = {
+        'id' : appointment_id
+    }
+    Appointment.destroy(data)
+    return redirect('/stylistDash')
+
 @app.route('/Appt_details')
 def displayDetails():
     return render_template('appt_details.html')
