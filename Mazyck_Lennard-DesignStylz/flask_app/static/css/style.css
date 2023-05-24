@@ -154,3 +154,19 @@ input[readonly] {
     -ms-border-radius: 30px;
     -o-border-radius: 30px;
 }
+
+.appt_container{
+    border: 5px solid black;
+    background-color: #693e52;
+    color: white;
+    border-radius: 30px;
+    margin-top: 10px;
+    margin-left: 325px;
+    width: 1000px;
+    display: flex;
+    padding: 20px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+}

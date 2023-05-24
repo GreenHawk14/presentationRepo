@@ -18,7 +18,6 @@ class Stylist:
                 self.email = data['email']
                 self.contact = data['contact']
                 self.img = data['img']
-                self.category = data['category']
                 self.created_at = data['created_at']
                 self.updated_at = data['updated_at']
 
@@ -36,7 +35,7 @@ class Stylist:
                 query = """
                         UPDATE stylist
                         SET first_name = %(first_name)s, last_name = %(last_name)s,  username = %(username)s, password = %(password)s,
-                        email = %(email)s, contact = %(contact)s, image = %(image)s, category = %(category)s
+                        email = %(email)s, contact = %(contact)s, image = %(image)s
                         WHERE id = %(id)s;
                         """
                 print("query", query)
@@ -72,6 +71,16 @@ class Stylist:
                 result = connectToMySQL(db).query_db(query, data)
                 print('query', query)
                 return cls(result[0])
+
+        @classmethod
+        def allStylist(cls):
+                query = "SELECT * FROM stylist;"
+                results = connectToMySQL(db).query_db(query)
+                stylist_cat = []
+                print("stylists", results)
+                for hairdresser in results:
+                        stylist_cat.append(cls(hairdresser))
+                return stylist_cat
 
         @staticmethod
         def stylist_validator(data):

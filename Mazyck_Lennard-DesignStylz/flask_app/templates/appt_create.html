@@ -22,6 +22,16 @@
             </ul>
         </div>
     </nav>
+    <h1 style="margin-left: 475px;">Let's Setup your appointment</h1>
+
+    {% with messages = get_flashed_messages(category_filter=['appointment']) %}     <!-- declare a variable called messages -->
+                        {% if messages %}                            <!-- check if there are any messages -->
+                            {% for message in messages %}            <!-- loop through the messages -->
+                                <p style="color: #ff0000; font-size:  24px; margin-left: 475px;">{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+
     <div class="appt_container">
         <form action="/appt_create" method="post">
             <div class="form-section">
@@ -34,22 +44,23 @@
                     <input type="time" name="time" id="time">
                 </div>
                 <div class="form-group">
-                    <label for="date">stylist listing</label>
                     <div class="input-group mb-3">
-                        <div class="custom-file">
-                            <input type="file" name="image" class="custom-file-input" id="inputGroupFile02">
-                            <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">Select a stylist</label>
                         </div>
-                        <div class="input-group-append">
-                            <span class="input-group-text" id="">Upload</span>
-                        </div>
+                        <select name="stylist_id" id="Stylist">
+                            <option value="">Any Stylist</option>
+                            {% for designer in styler%}
+                            <option name="{{designer.id}}" value="{{designer.id}}">{{designer.last_name}}, {{designer.first_name}}</option>
+                            {% endfor %}
+                        </select>
                     </div>
                 </div>
             </div>
             <div class="form-section">
                 <div class="form-group">
                     <label for="description">Any important details to note?</label>
-                    <textarea name="description" id="description" cols="15" rows="15"></textarea>
+                    <input style="width: 600px;" type="text" name="description" id="description">
                 </div>
                 <div class="form-group">
                     <label for="date">Do you have any kind photos to assist with your appointment?</label>
@@ -57,29 +68,30 @@
                 </div>
             </div>
             <div class="form-group">
+                <label for="first_name">What service would you like?</label>
                 <div class="checkbox-group">
                     <div>
-                        <input type="checkbox" name="category" value="Some braids would be nice.">
+                        <input type="radio" name="service" value="Some braids">
                         <label for="Braids">Braids</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="category" value="Definitely a haircut / touch-up.">
+                        <input type="radio" name="service" value="haircut/touch-up">
                         <label for="Haircut">Barber</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="category" value="A manicure / pedicure please.">
+                        <input type="radio" name="service" value="manicure/pedicure">
                         <label for="nails">Nails</label>
                     </div>
                     <div>
-                        <input type="checkbox" name="category" value="I'm feeling some wax therapy.">
+                        <input type="radio" name="service" value="wax therapy">
                         <label for="waxing">Waxing</label>
                     </div>
                 </div>
 
-                <label for="first_name">What service would you like?</label>
 
             </div>
             <button type="submit" class=" btn btn-info">Set appointment √</button>
+            <a style="color:#afffff; margin-left: 20px;" href="/customerDash" class="btn btn-outline-info">× Close</a>
         </form>
     </div>
 </body>

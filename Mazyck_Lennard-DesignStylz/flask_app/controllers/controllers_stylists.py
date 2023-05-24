@@ -85,8 +85,7 @@ def stylistUpdated(Stylist_id):
         'username' : request.form['username'],
         'email' : request.form['email'],
         'contact' : request.form['contact'],
-        'img' : request.form['img'],
-        'category' : request.form['category']
+        'img' : request.form['img']
     }
     Stylist.update_stylist(data)
     print('Details have been updated...')

@@ -1,4 +1,5 @@
 from flask_app.config.mysqlconnection import connectToMySQL
+from flask import session
 from flask_app import app
 from flask import flash
 import re
@@ -23,8 +24,8 @@ class Appointment:
         @classmethod
         def appointment_create(cls, data):
                 query  = """
-                        INSERT INTO appointment (date, time, description, service, image, stylist_id, customer_id, stylist_id)
-                        VALUES (%(date)s, %(time)s, %(description)s, %(service)s, %(image)s, %(stylist_id)s, %(customer_id)s, %(stylist_id)s);
+                        INSERT INTO appointment (date, time, description, service, image, customer_id, stylist_id)
+                        VALUES (%(date)s, %(time)s, %(description)s, %(service)s, %(image)s, %(customer_id)s, %(stylist_id)s);
                         """
                 print("query", query)
                 return connectToMySQL(db).query_db(query, data)
@@ -73,14 +74,14 @@ class Appointment:
                         SELECT * from appointment
                         LEFT JOIN customer
                         ON customer.id = appointment.customer_id;
-                        WHERE customer.id = %(id)s
+                        WHERE appointment.id = %(id)s
                         """
                 results = connectToMySQL(db).query_db(query,data)
                 catalog = []
                 for detail in results:
                         page = cls(detail)
                         customer_data = {
-                                'id' : detail['customer.id'],
+                                'id' : session['customer_id'],
                                 'first_name' : detail['first_name'],
                                 'last_name' : detail['last_name'],
                                 'email' : detail['email'],
@@ -89,7 +90,7 @@ class Appointment:
                                 'contact' : detail['contact'],
                                 'address' : detail['address'],
                                 'created_at' : detail['created_at'],
-                                'updated_at' : detail['updated_at'],
+                                'updated_at' : detail['updated_at']
                         }
                         page.bulletin = Appointment(customer_data)
                         catalog.append(page)
