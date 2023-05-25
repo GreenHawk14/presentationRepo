@@ -85,6 +85,7 @@ def customerUpdated(Customer_id):
         'first_name' : request.form['first_name'],
         'last_name' : request.form['last_name'],
         'username' : request.form['username'],
+        'password' : request.form['password'],
         'email' : request.form['email'],
         'contact' : request.form['contact'],
         'address' : request.form['address']

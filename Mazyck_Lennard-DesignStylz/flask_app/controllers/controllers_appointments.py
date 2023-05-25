@@ -20,9 +20,13 @@ def destroy(appointment_id):
     Appointment.destroy(data)
     return redirect('/stylistDash')
 
-@app.route('/Appt_details')
-def displayDetails():
-    return render_template('appt_details.html')
+@app.route('/Appt_details/<int:appointment_id>')
+def displayDetails(appointment_id):
+    data = {
+        'id' : appointment_id
+    }
+    display1 = Appointment.lookup_Appt(data)
+    return render_template('appt_details.html', order = display1)
 
 @app.route('/Appt_setup')
 def setupAppointment():
@@ -31,15 +35,17 @@ def setupAppointment():
 
 @app.route('/appt_create', methods=["POST"])
 def Appt_setup():
+    print(";".join(request.form.getlist('service')))
     data = {
         'customer_id' : session['customer_id'],
         'date' : request.form['date'],
         'time' : request.form['time'],
-        'description' : request.form['description'],
-        'service' : request.form['service'],
         'image' : request.form['image'],
+        'description' : request.form['description'],
+        'service' : ";".join(request.form.getlist('service')),
         'stylist_id' : request.form['stylist_id'],
     }
+
     valid = Appointment.appointment_validator(data)
     if valid:
         Appointment.appointment_create(data)

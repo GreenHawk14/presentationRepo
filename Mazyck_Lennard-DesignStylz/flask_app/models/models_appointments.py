@@ -4,6 +4,7 @@ from flask_app import app
 from flask import flash
 import re
 from flask_bcrypt import Bcrypt
+from flask_app.models import models_customers
 
 db = 'salon_db'
 bcrypt = Bcrypt(app)
@@ -15,11 +16,11 @@ class Appointment:
                 self.date = data['date']
                 self.time = data['time']
                 self.description = data['description']
-                self.service = data['service']
+                self.service = data['service'].split(";")
                 self.image = data['image']
                 self.created_at = data['created_at']
                 self.updated_at = data['updated_at']
-                self.bulletin = []
+                self.customer = None
 
         @classmethod
         def appointment_create(cls, data):
@@ -37,6 +38,7 @@ class Appointment:
                         WHERE id = %(id)s
                         """
                 result = connectToMySQL(db).query_db(query,data)
+                return cls(result[0])
 
         @classmethod
         def locateAppointment_viaLastName(cls,data):
@@ -48,7 +50,7 @@ class Appointment:
                 print('query', query)
                 if len(result) < 1:
                         return False
-                return Appointment(result[0])
+                return cls(result[0])
 
         @classmethod
         def update_appt(cls, data):
@@ -73,15 +75,15 @@ class Appointment:
                 query = """
                         SELECT * from appointment
                         LEFT JOIN customer
-                        ON customer.id = appointment.customer_id;
-                        WHERE stylist.id = %(id)s
+                        ON customer.id = appointment.customer_id
+                        WHERE stylist_id = %(id)s
                         """
                 results = connectToMySQL(db).query_db(query,data)
                 catalog = []
                 for detail in results:
                         page = cls(detail)
                         customer_data = {
-                                'id' : session['customer_id'],
+                                'id' : detail['customer_id'],
                                 'first_name' : detail['first_name'],
                                 'last_name' : detail['last_name'],
                                 'email' : detail['email'],
@@ -92,7 +94,7 @@ class Appointment:
                                 'created_at' : detail['created_at'],
                                 'updated_at' : detail['updated_at']
                         }
-                        page.bulletin = Appointment(customer_data)
+                        page.customer = models_customers.Customer(customer_data)
                         catalog.append(page)
                 return catalog
 
@@ -101,14 +103,14 @@ class Appointment:
                         SELECT * from appointment
                         LEFT JOIN customer
                         ON customer.id = appointment.customer_id;
-                        WHERE customer.id = %(id)s
+                        WHERE customer_id = %(id)s
                         """
                 results = connectToMySQL(db).query_db(query,data)
                 customer_bk = []
                 for page in results:
                         content = cls(page)
                         customer_details = {
-                                'id' : session['customer_id'],
+                                'id' : page['customer_id'],
                                 'first_name' : page['first_name'],
                                 'last_name' : page['last_name'],
                                 'email' : page['email'],
@@ -119,7 +121,7 @@ class Appointment:
                                 'created_at' : page['created_at'],
                                 'updated_at' : page['updated_at']
                         }
-                        content.bulletin = Appointment(customer_details)
+                        content.customer = models_customers.Customer(customer_details)
                         customer_bk.append(content)
                 return customer_bk
 

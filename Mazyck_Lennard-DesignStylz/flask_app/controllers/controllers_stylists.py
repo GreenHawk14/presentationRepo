@@ -66,8 +66,8 @@ def stylist_Dash():
         'id': session['stylist_id']
     }
     barber = Stylist.findStylist(data)
-    #Schedule = Appointment.apptDataOFcustomers(data)
-    return render_template('stylist_dashboard.html', barber = barber)
+    Schedule = Appointment.apptDataOFcustomers(data)
+    return render_template('stylist_dashboard.html', barber = barber, Schedule = Schedule)
 
 @app.route('/edit/Stylist/<int:stylist_id>')
 def editStylist(stylist_id):
@@ -84,6 +84,7 @@ def stylistUpdated(Stylist_id):
         'first_name' : request.form['first_name'],
         'last_name' : request.form['last_name'],
         'username' : request.form['username'],
+        'password' : request.form['password'],
         'email' : request.form['email'],
         'contact' : request.form['contact'],
         'img' : request.form['img']

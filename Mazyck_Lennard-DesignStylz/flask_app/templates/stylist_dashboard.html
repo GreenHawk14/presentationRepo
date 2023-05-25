@@ -29,10 +29,11 @@
         {% for detail in Schedule %}
             <div class="card-body" style="background-color: white; border:5px solid green; border-radius: 20px;">
                 <h4 class="card-title">Appointment Scheduled!</h4>
-                <h6 class="card-subtitle mb-2 text-muted">{{detail.service}}</h6>
+                {% for tier in detail.service%}
+                <h6 class="card-subtitle mb-2 text-muted">{{tier}}</h6>
+                {% endfor %}
                 <p class="card-text">Schedule on {{detail.date}} @ {{detail.time}}</p>
-                <button href="/show/appointment/{{detail.id}}">View More</button>
-                <a href="/Stylist/{{appointment.id}}/Delete" class="card-link">Cancel appointment</a>
+                <a href="/show/appointment/{{detail.id}}">View More</a> | <a href="/Stylist/{{detail.id}}/Delete" class="card-link">Cancel appointment</a>
             </div>
         {% endfor %}
 

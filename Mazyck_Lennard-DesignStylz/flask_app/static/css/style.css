@@ -63,14 +63,21 @@ input[readonly] {
     border: 5px solid #8b4c8c;
     background-color: #2b3595;
     border-radius: 30px;
-    width: 1200px;
+    width: 1000px;
     padding: 20px;
     margin-top: 10px;
-    margin-left: 250px;
+    margin-left: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
     -webkit-border-radius: 30px;
     -moz-border-radius: 30px;
     -ms-border-radius: 30px;
     -o-border-radius: 30px;
+}
+.card{
+    margin-left: 5px;
+    width: 300px;
 }
 
 .customer-list{

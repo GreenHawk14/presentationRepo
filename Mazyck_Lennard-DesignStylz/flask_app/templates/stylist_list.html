@@ -25,7 +25,7 @@
     <div class="stylist-log overflow-auto" data-spy="scroll" data-target="#navbar-example2" data-offset="0" style="height: 525px;">
 
         {%for info in employee%}
-        <div class="card border-primary mb-3" style="max-width: 20rem; height: auto;">
+        <div class="card border-primary mb-3" style="max-width: 20rem; height: 275px; display:flex; justify-content:space-between;">
             <div class="card-header">{{info.last_name}}, {{info.first_name}}</div>
             <div class="card-body">
                 <img src="{{info.img}}" alt="stylist_{{info.last_name}}">
