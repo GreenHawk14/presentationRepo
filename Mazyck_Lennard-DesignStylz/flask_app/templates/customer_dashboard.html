@@ -27,8 +27,7 @@
         </div>
         <div class="card-profile border-secondary mb-3" style="max-width: 20rem;">
             <div class="card-body">
-                <h4 style="font-size: 24px;" class="card-title"> <br> Welcome, <a style="color: #f1fea4;" href="/edit/Customer/{{client.id}}">{{client.username}}</a></h4>
-                <img style="width: 100px; height: 100px;" src="" alt="customer-pic">
+                <h4 style="font-size: 24px;" class="card-title"> <br> Welcome, <a style="color: #f1fea4;" href="/edit/Customer/{{customer.id}}">{{customer.username}}</a></h4>
                 <a style="color:#afffff; margin-left: 20px;" href="/customer-login" class="btn btn-outline-info">× Logout</a>
             </div>
         </div>
@@ -36,11 +35,11 @@
     <h1 style="margin-left: 300px;">Scheduled Appointment(s):</h1>
     <div class="customer-list overflow-auto" data-spy="scroll" data-target="#navbar-example2" data-offset="0">
 
-        {% for detail in Appt %}
-            <div class="card-body" style="background-color: white; border:5px solid green; border-radius: 20px;">
-                <h4 class="card-title">Appointment added!</h4>
-                <p class="card-text">Schedule on {{detail.date}} @ {{detail.time}}</p>
-                <a href="/Stylist/{{appointment.id}}/Delete" class="card-link">Cancel appointment</a>
+        {% for detail in customer.appointment %}
+            <h4 class="card-title" style="color: white;">Appointment added!</h4>
+            <div class="card-body_customer" style="background-color: white; border:5px solid green; border-radius: 20px;">
+                <p class="card-text">Schedule on {{detail.customer.appointment.date}} @ {{detail.customer.appointment.time}}</p>
+                <a href="/Stylist/{{detail.id}}/Delete" class="card-link"><button>Cancel appointment</button></a>
             </div>
         {% endfor %}
 

@@ -18,7 +18,7 @@
         <H3>Edit profile: {{lookup.last_name}} , {{lookup.first_name}}</H3>
     </nav>
 
-    <div class="editForm_stylist" style="background-color: #182952; color: white;">
+    <div class="editForm_stylist" enctype="multipart/form-data" style="background-color: #182952; color: white;">
             <form action="/update_Stylist/{{lookup.id}}" method="post">
             <div class="form-group">
                 <label for="username">Username:</label>
@@ -37,24 +37,8 @@
                 <input type="email" name="email" value="{{lookup.email}}">
             </div>
             <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="text" name="password" value="{{lookup.password}}">
-            </div>
-            <div class="form-group">
                 <label for="contact">Phone number:</label>
                 <input type="number" name="contact" value="{{lookup.contact}}" placeholder="1234567890" value="{{lookup.contact}}">
-            </div>
-            <div class="form-group">
-                <label for="image">Profile Picture:</label>
-                <div class="input-group mb-3">
-                    <div class="custom-file">
-                        <input type="file" name="img" class="custom-file-input" id="inputGroupFile02">
-                        <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
-                    </div>
-                    <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
-                    </div>
-                </div>
             </div>
         <!--<div class="form-group">
                 <label for="first_name">Specialty:</label>

@@ -20,6 +20,7 @@ class Customer:
                 self.address = data['address']
                 self.created_at = data['created_at']
                 self.updated_at = data['updated_at']
+                self.appointments = []
 
         @classmethod
         def create_customer(cls, data):
@@ -35,7 +36,7 @@ class Customer:
                 query = """
                         UPDATE customer
                         SET first_name = %(first_name)s, last_name = %(last_name)s, email = %(email)s, username = %(username)s,
-                        password = %(password)s, contact = %(contact)s, address = %(address)s
+                        contact = %(contact)s, address = %(address)s
                         WHERE id = %(id)s;
                         """
                 print("query", query)

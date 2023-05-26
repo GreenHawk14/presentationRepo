@@ -12,13 +12,17 @@ bcrypt = Bcrypt(app)
 def index():
     return render_template('index.html')
 
-@app.route('/Stylist/<int:appointment_id>/Delete')
+@app.route('/Appointment/<int:appointment_id>/Delete')
 def destroy(appointment_id):
     data = {
         'id' : appointment_id
     }
     Appointment.destroy(data)
-    return redirect('/stylistDash')
+    if Stylist in session:
+        return redirect('/stylistDash')
+    if Customer in session:
+        return redirect('/customerDash')
+    return redirect('/')
 
 @app.route('/Appt_details/<int:appointment_id>')
 def displayDetails(appointment_id):
@@ -40,7 +44,6 @@ def Appt_setup():
         'customer_id' : session['customer_id'],
         'date' : request.form['date'],
         'time' : request.form['time'],
-        'image' : request.form['image'],
         'description' : request.form['description'],
         'service' : ";".join(request.form.getlist('service')),
         'stylist_id' : request.form['stylist_id'],

@@ -49,7 +49,6 @@
                             <label class="input-group-text" for="inputGroupSelect01">Select a stylist</label>
                         </div>
                         <select name="stylist_id" id="Stylist">
-                            <option value="">Any Stylist</option>
                             {% for designer in styler%}
                             <option name="{{designer.id}}" value="{{designer.id}}">{{designer.last_name}}, {{designer.first_name}}</option>
                             {% endfor %}
@@ -61,10 +60,6 @@
                 <div class="form-group">
                     <label for="description">Any important details to note?</label>
                     <input style="width: 600px;" type="text" name="description" id="description">
-                </div>
-                <div class="form-group">
-                    <label for="date">Do you have any kind photos to assist with your appointment?</label>
-                    <input type="text" name="image" id="image">
                 </div>
             </div>
 

@@ -1,5 +1,5 @@
 from flask_app import app
-from flask import render_template, redirect, request, session, flash
+from flask import render_template, redirect, request, session, flash, Flask
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app.models.models_stylists import Stylist
 from flask_app.models.models_customers import Customer
@@ -65,9 +65,11 @@ def customer_Dash():
     data ={
         'id': session['customer_id']
     }
-    client = Customer.findCustomer(data)
-    #Appt = Appointment.apptDetailsCustomers(data)
-    return render_template('customer_dashboard.html', client = client)
+    print(session['customer_id'], "--------------------------")
+    print("data ########", data)
+    #client = Customer.findCustomer(data)
+    customer = Appointment.getCustomersWithAppts(data)
+    return render_template('customer_dashboard.html', customer = customer)
 
 @app.route('/edit/Customer/<int:customer_id>')
 def editCustomer(customer_id):
@@ -85,7 +87,6 @@ def customerUpdated(Customer_id):
         'first_name' : request.form['first_name'],
         'last_name' : request.form['last_name'],
         'username' : request.form['username'],
-        'password' : request.form['password'],
         'email' : request.form['email'],
         'contact' : request.form['contact'],
         'address' : request.form['address']

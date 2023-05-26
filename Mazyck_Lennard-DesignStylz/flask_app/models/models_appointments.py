@@ -5,6 +5,7 @@ from flask import flash
 import re
 from flask_bcrypt import Bcrypt
 from flask_app.models import models_customers
+from flask_app.models import models_stylists
 
 db = 'salon_db'
 bcrypt = Bcrypt(app)
@@ -17,16 +18,16 @@ class Appointment:
                 self.time = data['time']
                 self.description = data['description']
                 self.service = data['service'].split(";")
-                self.image = data['image']
                 self.created_at = data['created_at']
                 self.updated_at = data['updated_at']
                 self.customer = None
+                self.stylist = None
 
         @classmethod
         def appointment_create(cls, data):
                 query  = """
-                        INSERT INTO appointment (date, time, description, service, image, customer_id, stylist_id)
-                        VALUES (%(date)s, %(time)s, %(description)s, %(service)s, %(image)s, %(customer_id)s, %(stylist_id)s);
+                        INSERT INTO appointment (date, time, description, service, customer_id, stylist_id)
+                        VALUES (%(date)s, %(time)s, %(description)s, %(service)s, %(customer_id)s, %(stylist_id)s);
                         """
                 print("query", query)
                 return connectToMySQL(db).query_db(query, data)
@@ -35,7 +36,7 @@ class Appointment:
         def lookup_Appt(cls, data):
                 query = """
                         SELECT * from appointment
-                        WHERE id = %(id)s
+                        WHERE id = %(id)s;
                         """
                 result = connectToMySQL(db).query_db(query,data)
                 return cls(result[0])
@@ -44,7 +45,7 @@ class Appointment:
         def locateAppointment_viaLastName(cls,data):
                 query = """
                         SELECT * FROM appointment
-                        WHERE Last_name = %(Last_name)s
+                        WHERE Last_name = %(Last_name)s;
                         """
                 result = connectToMySQL(db).query_db(query, data)
                 print('query', query)
@@ -56,7 +57,7 @@ class Appointment:
         def update_appt(cls, data):
                 query = """
                         UPDATE appointment
-                        SET date = %(date)s, time = %(time)s, description = %(description)s, service = %(service)s, image = %(image)s
+                        SET date = %(date)s, time = %(time)s, description = %(description)s, service = %(service)s,
                         WHERE id = %(id)s;
                         """
                 print("query", query)
@@ -71,59 +72,51 @@ class Appointment:
                 return connectToMySQL(db).query_db(query, data)
 
         @classmethod
-        def apptDataOFcustomers(cls, data):
+        def getStylistWithAppts(cls, data):
                 query = """
-                        SELECT * from appointment
-                        LEFT JOIN customer
-                        ON customer.id = appointment.customer_id
-                        WHERE stylist_id = %(id)s
+                        SELECT * from stylist
+                        LEFT JOIN appointment
+                        ON stylist.id = appointment.stylist_id
+                        WHERE stylist_id = %(id)s;
                         """
-                results = connectToMySQL(db).query_db(query,data)
-                catalog = []
+                results = connectToMySQL(db).query_db(query, data)
+                stylist = models_stylists.Stylist(results[0])
                 for detail in results:
-                        page = cls(detail)
-                        customer_data = {
-                                'id' : detail['customer_id'],
-                                'first_name' : detail['first_name'],
-                                'last_name' : detail['last_name'],
-                                'email' : detail['email'],
-                                'username' : detail['username'],
-                                'password' : detail['password'],
-                                'contact' : detail['contact'],
-                                'address' : detail['address'],
-                                'created_at' : detail['created_at'],
-                                'updated_at' : detail['updated_at']
+                        appointment_data = {
+                                'id' : detail['id'],
+                                'date' : detail['date'],
+                                'time': detail['time'],
+                                'description': detail['description'],
+                                'service': detail['service'],
+                                'created_at': detail['created_at'],
+                                'updated_at': detail['updated_at']
                         }
-                        page.customer = models_customers.Customer(customer_data)
-                        catalog.append(page)
-                return catalog
+                        stylist.appointment.append(cls(appointment_data))
 
-        def apptDetailsCustomers(cls, data):
+                return stylist
+        @classmethod
+        def getCustomersWithAppts(cls, data):
                 query = """
-                        SELECT * from appointment
-                        LEFT JOIN customer
-                        ON customer.id = appointment.customer_id;
-                        WHERE customer_id = %(id)s
+                        SELECT * from customer
+                        LEFT JOIN appointment
+                        ON customer.id = appointment.customer_id
+                        WHERE customer_id = %(id)s;
                         """
-                results = connectToMySQL(db).query_db(query,data)
-                customer_bk = []
+                results = connectToMySQL(db).query_db(query, data)
+                print("RESULTS ------>", results)
+                customer = models_customers.Customer(results[0])
                 for page in results:
-                        content = cls(page)
-                        customer_details = {
-                                'id' : page['customer_id'],
-                                'first_name' : page['first_name'],
-                                'last_name' : page['last_name'],
-                                'email' : page['email'],
-                                'username' : page['username'],
-                                'password' : page['password'],
-                                'contact' : page['contact'],
-                                'address' : page['address'],
-                                'created_at' : page['created_at'],
-                                'updated_at' : page['updated_at']
+                        appointment_data = {
+                                'id' : page['id'],
+                                'date' : page['date'],
+                                'time': page['time'],
+                                'description': page['description'],
+                                'service': page['service'],
+                                'created_at': page['created_at'],
+                                'updated_at': page['updated_at']
                         }
-                        content.customer = models_customers.Customer(customer_details)
-                        customer_bk.append(content)
-                return customer_bk
+                        customer.appointments.append(cls(appointment_data))
+                return customer
 
         @staticmethod
         def appointment_validator(data):

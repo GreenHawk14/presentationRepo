@@ -2,6 +2,11 @@
     padding: 0;
     margin: 0;
 }
+img{
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+}
 input[readonly] {
     background-color: #c0c0c0;
 }
@@ -30,14 +35,24 @@ input[readonly] {
     -ms-border-radius: 20px;
     -o-border-radius: 20px;
 }
-.card{
-    width: 375px;
-    height: 450px;
+
+.card-body_stylist{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 20px;
+    margin: 10px;
+    width: 400px;
+    height: 300px;
 
 }
-.card-body{
-    flex-wrap: wrap;
-    justify-content: space-between;
+.card-body_customer{
+    display: flex;
+    justify-content: space-evenly;
+    width: 1000px;
+    height: 75px;
+    padding: 20px;
+    margin: 5px;
 }
 .style_land{
     width: 250px;
@@ -47,10 +62,11 @@ input[readonly] {
     border: 5px solid #74dbef;
     border-radius: 20px;
     background-color: #393c83;
+    display: flex;
     padding: 20px;
     margin-top: 25px;
-    margin-left: 250px;
-    width: 1200px;
+    margin-left: 200px;
+    width: 1300px;
     height: 600px;
     flex-wrap: wrap;
     -webkit-border-radius: 20px;
@@ -77,7 +93,7 @@ input[readonly] {
 }
 .card{
     margin-left: 5px;
-    width: 300px;
+    max-height: 200px;
 }
 
 .customer-list{
@@ -88,7 +104,7 @@ input[readonly] {
     margin-top: 25px;
     margin-left: 250px;
     width: 1200px;
-    height: 300px;
+    height: 400px;
     display: flex;
     flex-wrap: wrap;
     -webkit-border-radius: 20px;

@@ -1,5 +1,7 @@
+import imghdr
+from socket import create_connection
 from flask_app import app
-from flask import render_template, redirect, request, session, flash
+from flask import render_template, redirect, request, session, flash, Flask
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app.models.models_stylists import Stylist
 from flask_app.models.models_customers import Customer
@@ -65,9 +67,8 @@ def stylist_Dash():
     data ={
         'id': session['stylist_id']
     }
-    barber = Stylist.findStylist(data)
-    Schedule = Appointment.apptDataOFcustomers(data)
-    return render_template('stylist_dashboard.html', barber = barber, Schedule = Schedule)
+    stylist = Appointment.getStylistWithAppts(data)
+    return render_template('stylist_dashboard.html', stylist = stylist)
 
 @app.route('/edit/Stylist/<int:stylist_id>')
 def editStylist(stylist_id):
@@ -84,10 +85,8 @@ def stylistUpdated(Stylist_id):
         'first_name' : request.form['first_name'],
         'last_name' : request.form['last_name'],
         'username' : request.form['username'],
-        'password' : request.form['password'],
         'email' : request.form['email'],
-        'contact' : request.form['contact'],
-        'img' : request.form['img']
+        'contact' : request.form['contact']
     }
     Stylist.update_stylist(data)
     print('Details have been updated...')

@@ -17,9 +17,9 @@ class Stylist:
                 self.password = bcrypt.generate_password_hash(data['password'])
                 self.email = data['email']
                 self.contact = data['contact']
-                self.img = data['img']
                 self.created_at = data['created_at']
                 self.updated_at = data['updated_at']
+                self.appointment = []
 
         @classmethod
         def stylist_create(cls, data):
@@ -34,8 +34,8 @@ class Stylist:
         def update_stylist(cls, data):
                 query = """
                         UPDATE stylist
-                        SET first_name = %(first_name)s, last_name = %(last_name)s,  username = %(username)s, password = %(password)s,
-                        email = %(email)s, contact = %(contact)s, image = %(image)s
+                        SET first_name = %(first_name)s, last_name = %(last_name)s,  username = %(username)s,
+                        email = %(email)s, contact = %(contact)s
                         WHERE id = %(id)s;
                         """
                 print("query", query)
