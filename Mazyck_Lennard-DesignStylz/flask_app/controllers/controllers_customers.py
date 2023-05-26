@@ -54,6 +54,7 @@ def customer_login():
     session['customer_id'] = customer.id
 
     print('<<<<<<<<<<<<<<<<<<< processing >>>>>>>>>>>>>>>>>>')
+    print(session['customer_id'])
     print('<<<<<<<<<.......Login Successful.......>>>>>>>>>>')
 
     return redirect('/customerDash')
@@ -93,4 +94,19 @@ def customerUpdated(Customer_id):
     }
     Customer.update_customer(data)
     print('Details have been updated...')
+    return redirect('/customerDash')
+
+@app.route('/Customer/<int:appointment_id>/Delete')
+def Customer_destroy(appointment_id):
+    print(appointment_id)
+    if 'customer_id' not in session:
+        print('delete 1')
+        return redirect('/')
+    # if 'stylist_id' not in session:
+    #     print('delete 1')
+    #     return redirect('/')
+    data = {
+        'id' : appointment_id
+    }
+    Appointment.destroy_appt(data)
     return redirect('/customerDash')

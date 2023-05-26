@@ -22,7 +22,7 @@
             </div>
         </div>
     </nav>
-    <h3 style="margin-left: 250px;">Upcoming appointments:</h3>
+    <h3 style="margin-left: 150px;">Upcoming appointments:</h3>
     <div class="stylist-list overflow-auto" data-spy="scroll" data-target="#navbar-example2" data-offset="0" style="height: 525px; padding: 20px;">
 
         {% for appt in stylist.appointment %}
@@ -32,6 +32,7 @@
                 <h6 class="card-subtitle mb-2 text-muted">{{tier}}</h6>
                 {% endfor %}
                 <p class="card-text">Schedule on {{appt.date}} @ {{appt.time}}</p>
+                <p>{{stylist.id}}</p>
                 <a href="/show/appointment/{{appt.id}}"><button type="button" class="btn btn-primary">View More ◙</button></a> <a href="/Stylist/{{appt.id}}/Delete" class="card-link">Cancel ×</a>
             </div>
         {% endfor %}

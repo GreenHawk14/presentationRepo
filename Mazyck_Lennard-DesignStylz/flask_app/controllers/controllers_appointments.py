@@ -12,18 +12,6 @@ bcrypt = Bcrypt(app)
 def index():
     return render_template('index.html')
 
-@app.route('/Appointment/<int:appointment_id>/Delete')
-def destroy(appointment_id):
-    data = {
-        'id' : appointment_id
-    }
-    Appointment.destroy(data)
-    if Stylist in session:
-        return redirect('/stylistDash')
-    if Customer in session:
-        return redirect('/customerDash')
-    return redirect('/')
-
 @app.route('/Appt_details/<int:appointment_id>')
 def displayDetails(appointment_id):
     data = {

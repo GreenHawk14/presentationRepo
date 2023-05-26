@@ -20,7 +20,7 @@ class Customer:
                 self.address = data['address']
                 self.created_at = data['created_at']
                 self.updated_at = data['updated_at']
-                self.appointments = []
+                self.appointment = []
 
         @classmethod
         def create_customer(cls, data):

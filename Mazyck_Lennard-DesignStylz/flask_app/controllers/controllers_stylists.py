@@ -97,5 +97,21 @@ def displayApptDetails(appointment_id):
     data = {
         'id': appointment_id
     }
-    Appt = Appointment.apptDetailsCustomers(data)
+    Appt = Appointment.getApptsbyID(data)
     return render_template('appt_details.html', Appt = Appt)
+
+@app.route('/Stylist/<int:appointment_id>/Delete')
+def Style_destroy(appointment_id):
+    if 'stylist_id' not in session:
+        print('delete 1')
+        return redirect('/')
+    # if 'stylist_id' not in session:
+    #     print('delete 1')
+    #     return redirect('/')
+    data = {
+        'id' : appointment_id
+    }
+    Appointment.destroy_appt(data)
+    if 'stylist_id' in session:
+        print('delete 2')
+        return redirect('/stylistDash')

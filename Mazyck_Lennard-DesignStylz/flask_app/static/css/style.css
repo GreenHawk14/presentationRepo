@@ -12,6 +12,7 @@ input[readonly] {
 }
 .navbar{
     height: 150px;
+    width: auto;
     display: flex;
     justify-content: space-between;
 }
@@ -50,7 +51,7 @@ input[readonly] {
     display: flex;
     justify-content: space-evenly;
     width: 1000px;
-    height: 75px;
+    height: 100px;
     padding: 20px;
     margin: 5px;
 }
@@ -65,7 +66,7 @@ input[readonly] {
     display: flex;
     padding: 20px;
     margin-top: 25px;
-    margin-left: 200px;
+    margin-left: 100px;
     width: 1300px;
     height: 600px;
     flex-wrap: wrap;
@@ -95,6 +96,14 @@ input[readonly] {
     margin-left: 5px;
     max-height: 200px;
 }
+.card_landing{
+    border: 1px solid gray;
+    height: 450px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
 
 .customer-list{
     border: 5px solid #74dbef;
@@ -102,8 +111,8 @@ input[readonly] {
     background-color: #393c83;
     padding: 20px;
     margin-top: 25px;
-    margin-left: 250px;
-    width: 1200px;
+    margin-left: 150px;
+    width: 1000px;
     height: 400px;
     display: flex;
     flex-wrap: wrap;
@@ -207,4 +216,32 @@ input[readonly] {
     -moz-border-radius: 30px;
     -ms-border-radius: 30px;
     -o-border-radius: 30px;
+}
+.display_details{
+    border: 3px solid #1c1124;
+    background-color: #693e52;
+    color: white;
+    border-radius: 30px;
+    width: 1200px;
+    margin-left: 150px;
+    margin-top: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+}
+.customer_info{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.appt_info{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }

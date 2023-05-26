@@ -6,6 +6,7 @@ import re
 from flask_bcrypt import Bcrypt
 from flask_app.models import models_customers
 from flask_app.models import models_stylists
+import pprint
 
 db = 'salon_db'
 bcrypt = Bcrypt(app)
@@ -77,45 +78,80 @@ class Appointment:
                         SELECT * from stylist
                         LEFT JOIN appointment
                         ON stylist.id = appointment.stylist_id
-                        WHERE stylist_id = %(id)s;
+                        WHERE stylist.id = %(id)s;
                         """
                 results = connectToMySQL(db).query_db(query, data)
                 stylist = models_stylists.Stylist(results[0])
+                print(len(results))
+                if results[0]['appointment.id'] == None:
+                        print('APPT')
+                        return stylist
                 for detail in results:
                         appointment_data = {
-                                'id' : detail['id'],
+                                'id' : detail['appointment.id'],
                                 'date' : detail['date'],
                                 'time': detail['time'],
                                 'description': detail['description'],
                                 'service': detail['service'],
-                                'created_at': detail['created_at'],
-                                'updated_at': detail['updated_at']
+                                'created_at': detail['appointment.created_at'],
+                                'updated_at': detail['appointment.updated_at']
                         }
                         stylist.appointment.append(cls(appointment_data))
 
                 return stylist
+
+        @classmethod
+        def getApptsbyID(cls, data):
+                query = """
+                        SELECT * from appointment
+                        LEFT JOIN customer
+                        ON customer.id = appointment.customer_id
+                        WHERE appointment.id = %(id)s;
+                        """
+                results = connectToMySQL(db).query_db(query, data)
+                print("RESULTS ------>", results)
+                appointment = cls(results[0])
+                customer_data = {
+                        'id' : results[0]['customer_id'],
+                        'first_name' : results[0]['first_name'],
+                        'last_name' : results[0]['last_name'],
+                        'email' : results[0]['email'],
+                        'username' : results[0]['username'],
+                        'password' : results[0]['password'],
+                        'contact' : results[0]['contact'],
+                        'address' : results[0]['address'],
+                        'created_at': results[0]['customer.created_at'],
+                        'updated_at': results[0]['customer.updated_at']
+                }
+                appointment.customer = models_customers.Customer(customer_data)
+                return appointment
+
         @classmethod
         def getCustomersWithAppts(cls, data):
                 query = """
                         SELECT * from customer
                         LEFT JOIN appointment
                         ON customer.id = appointment.customer_id
-                        WHERE customer_id = %(id)s;
+                        WHERE customer.id = %(id)s;
                         """
                 results = connectToMySQL(db).query_db(query, data)
-                print("RESULTS ------>", results)
+                print("RESULTS** ------>", results)
                 customer = models_customers.Customer(results[0])
+                print(len(results))
+                if results[0]['appointment.id'] == None:
+                        print('APPT')
+                        return customer
                 for page in results:
                         appointment_data = {
-                                'id' : page['id'],
+                                'id' : page['appointment.id'],
                                 'date' : page['date'],
                                 'time': page['time'],
                                 'description': page['description'],
                                 'service': page['service'],
-                                'created_at': page['created_at'],
-                                'updated_at': page['updated_at']
+                                'created_at': page['appointment.created_at'],
+                                'updated_at': page['appointment.updated_at']
                         }
-                        customer.appointments.append(cls(appointment_data))
+                        customer.appointment.append(cls(appointment_data))
                 return customer
 
         @staticmethod

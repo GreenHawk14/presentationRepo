@@ -32,14 +32,14 @@
             </div>
         </div>
     </nav>
-    <h1 style="margin-left: 300px;">Scheduled Appointment(s):</h1>
+    <h1 style="margin-left: 200px;">Scheduled Appointment(s):</h1>
     <div class="customer-list overflow-auto" data-spy="scroll" data-target="#navbar-example2" data-offset="0">
 
         {% for detail in customer.appointment %}
-            <h4 class="card-title" style="color: white;">Appointment added!</h4>
             <div class="card-body_customer" style="background-color: white; border:5px solid green; border-radius: 20px;">
-                <p class="card-text">Schedule on {{detail.customer.appointment.date}} @ {{detail.customer.appointment.time}}</p>
-                <a href="/Stylist/{{detail.id}}/Delete" class="card-link"><button>Cancel appointment</button></a>
+                <h4 class="card-title" style="color: green;">Appointment added!</h4>
+                <p class="card-text">Schedule on {{detail.date}} @ {{detail.time}}</p>
+                <a href="/Customer/{{detail.id}}/Delete" class="card-link"><button type="button" class="btn btn-outline-danger">Cancel</button></a>
             </div>
         {% endfor %}
 
