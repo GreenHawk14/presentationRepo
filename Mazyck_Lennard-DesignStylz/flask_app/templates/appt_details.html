@@ -19,22 +19,26 @@
     </nav>
     <div class="display_details overflow-auto" data-spy="scroll" data-offset="0">
             <div class="customer_info">
-                <h2>Customer Profile</h2>
-                <p>Name: {{Appt.customer.last_name}}, {{Appt.customer.first_name}}</p>
-                <p>Email: {{Appt.customer.email}}</p>
-                <p>Phone number: {{Appt.customer.contact}}</p>
-                <p>Mailing Address: {{Appt.customer.address}}</p>
-                <a href="/stylistDash"><button class="btn btn-info">close</button></a>
+                <div>
+                    <h2>Customer Profile</h2>
+                    <p style="font-size: 24px;">Name: {{Appt.customer.last_name}}, {{Appt.customer.first_name}}</p>
+                    <p style="font-size: 24px;">Email: {{Appt.customer.email}}</p>
+                    <p style="font-size: 24px;">Phone number: {{Appt.customer.contact}}</p>
+                    <p style="font-size: 24px;">Mailing Address: {{Appt.customer.address}}</p>
+                    <a href="/stylistDash"><button class="btn btn-info">× close </button></a>
+                </div>
             </div>
             <div class="appt_info">
-                <h2>Appointment</h2>
-                <p>Date: {{Appt.date}}</p>
-                <p>Scheduled Time (ETA): {{Appt.time}}</p>
-                <p><h4>Client comment(s):</h4> {{Appt.description}}</p>
-                <h4>Requested service:</h4>
-                {% for service in Appt.service%}
-                    <p>○ {{service}} √</p>
-                {% endfor %}
+                <div>
+                    <h2>Appointment</h2>
+                    <p style="font-size: 24px;">Date: {{Appt.date}}</p>
+                    <p style="font-size: 24px;">Scheduled Time (ETA): {{Appt.time}}</p>
+                    <p style="font-size: 24px;"><h4>Client comment(s):</h4> {{Appt.description}}</p>
+                    <h4 >Requested service:</h4>
+                    {% for service in Appt.service%}
+                        <p style="font-size: 24px;">○ {{service}} √</p>
+                    {% endfor %}
+                </div>
             </div>
     </div>
 </body>

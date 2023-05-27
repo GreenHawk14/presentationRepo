@@ -40,11 +40,11 @@ input[readonly] {
 .card-body_stylist{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-around;
     padding: 20px;
-    margin: 10px;
+    margin: 20px;
     width: 400px;
-    height: 300px;
+    height: auto;
 
 }
 .card-body_customer{
@@ -223,10 +223,12 @@ input[readonly] {
     color: white;
     border-radius: 30px;
     width: 1200px;
+    height: 500px;
     margin-left: 150px;
     margin-top: 20px;
     padding: 20px;
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
     -webkit-border-radius: 30px;
     -moz-border-radius: 30px;
@@ -236,12 +238,12 @@ input[readonly] {
 .customer_info{
     width: 500px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
 }
 .appt_info{
     width: 500px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
 }
