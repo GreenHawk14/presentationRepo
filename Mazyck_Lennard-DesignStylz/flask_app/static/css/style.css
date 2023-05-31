@@ -23,7 +23,7 @@ input[readonly] {
 .container_landing{
     border: 5px solid #4e2161;
     border-radius: 20px;
-    box-shadow: 3px 5px 10px;
+    box-shadow: 3px 5px 15px;
     width: 1000px;
     height: 600px;
     margin-left: 350px;
@@ -41,19 +41,21 @@ input[readonly] {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    padding: 20px;
-    margin: 20px;
+    padding: 25px;
+    margin-top: 20px;
+    margin-left: 10px;
     width: 400px;
     height: auto;
 
 }
 .card-body_customer{
     display: flex;
+    flex-direction: row;
     justify-content: space-evenly;
     width: 1000px;
-    height: 100px;
+    max-height: 100px;
     padding: 20px;
-    margin: 5px;
+    margin-top: 20px;
 }
 .style_land{
     width: 250px;
@@ -64,11 +66,10 @@ input[readonly] {
     border-radius: 20px;
     background-color: #393c83;
     display: flex;
-    padding: 20px;
-    margin-top: 25px;
+    margin-top: 20px;
     margin-left: 100px;
-    width: 1300px;
-    height: 600px;
+    max-width: 1300px;
+    max-height: 600px;
     flex-wrap: wrap;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
@@ -80,7 +81,8 @@ input[readonly] {
     border: 5px solid #8b4c8c;
     background-color: #2b3595;
     border-radius: 30px;
-    width: 1000px;
+    max-width: 1000px;
+    max-height: 600px;
     padding: 20px;
     margin-top: 10px;
     margin-left: 300px;
@@ -93,33 +95,41 @@ input[readonly] {
     -o-border-radius: 30px;
 }
 .card{
-    margin-left: 5px;
-    max-height: 200px;
+    margin-left: 10px;
+    max-height: 250px;
+    width: 300px;
 }
 .card_landing{
-    border: 1px solid gray;
+    border: 5px solid #e8e2db;
+    box-shadow: 3px -5px 30px;
+    border-radius: 30px;
     height: 450px;
     width: 350px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
 }
 
 .customer-list{
     border: 5px solid #74dbef;
-    border-radius: 20px;
+    border-radius: 30px;
     background-color: #393c83;
-    padding: 20px;
+    padding: 10px;
     margin-top: 25px;
     margin-left: 150px;
     width: 1000px;
     height: 400px;
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -ms-border-radius: 20px;
-    -o-border-radius: 20px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
 }
 .login-stylist{
     background-color: #693e52;

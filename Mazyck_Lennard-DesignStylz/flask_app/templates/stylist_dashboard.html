@@ -29,13 +29,13 @@
             <div class="card-body_stylist" style="background-color: white; border:5px solid green; border-radius: 20px;">
                 <h4 class="card-title">Appointment Scheduled!</h4>
                 <div>
-                    <h5>ticket #: {{appt.id}}</h5>
+                    <h5>ticket ref# {{appt.id}}</h5>
                     {% for tier in appt.service%}
                     <h6 class="card-subtitle mb-2 text-muted">√ {{tier}}</h6>
                     {% endfor %}
                 </div>
                 <h5 class="card-text">Timeslot reserved! <br> Date: {{appt.date}} <br> ETA: {{appt.time}}</h5>
-                <h5>assigned to: {{stylist.last_name}}, {{stylist.first_name}}</h5>
+                <h5>Assigned Stylist to task: <br>{{stylist.last_name}}, {{stylist.first_name}}</h5>
                 <a href="/show/appointment/{{appt.id}}"><button type="button" class="btn btn-primary">View More ◙</button></a> <a href="/Stylist/{{appt.id}}/Delete" class="card-link">Cancel ×</a>
             </div>
         {% endfor %}
