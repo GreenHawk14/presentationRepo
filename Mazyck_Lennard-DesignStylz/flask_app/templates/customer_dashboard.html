@@ -36,11 +36,14 @@
     <div class="customer-list overflow-auto" data-spy="scroll" data-target="#navbar-example2" data-offset="0">
 
         {% for detail in customer.appointment %}
-            <div class="card-body_customer" style="background-color: white; border:5px solid green; border-radius: 20px;">
-                <h4 class="card-title" style="color: green;">Appointment added!</h4>
-                <p class="card-text">Schedule on {{detail.date}} @ {{detail.time}}</p>
-                <a href="/Customer/{{detail.id}}/Delete" class="card-link"><button type="button" class="btn btn-outline-danger">Cancel</button></a>
-            </div>
+                <div class="card-body_customer" style="background-color: white; border:5px solid green; border-radius: 20px;">
+                    <h4 class="card-title" style="color: green;">Appointment added!</h4>
+                    <div>
+                        <p class="card-text">Schedule:</p>
+                        <p class="card-text">{{detail.date}} @ {{detail.time}}</p>
+                    </div>
+                    <a href="/Customer/{{detail.id}}/Delete" class="card-link"><button type="button" class="btn btn-outline-danger">Cancel</button></a>
+                </div>
         {% endfor %}
 
     </div>

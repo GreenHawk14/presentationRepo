@@ -10,6 +10,7 @@ pymysql = "*"
 flask-bcrypt = "*"
 cryptography = "*"
 alert = "*"
+bcrypt = "*"
 
 [dev-packages]
 
